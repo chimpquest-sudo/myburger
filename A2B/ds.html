@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All About BurGer | Legend of Burger</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Background Animation Canvas */
+    #bg-animation {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle at center, #001, #000);
+    }
+
+    /* Header & Logo */
+    header {
+      text-align: center;
+      padding: 30px 10px;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      width: 180px;
+      height: 180px;
+      margin: auto;
+      background: url('burgerlogo.jpg') center/cover no-repeat;
+      border: 3px solid #FFD700;
+      border-radius: 50%;
+      box-shadow: 0 0 20px #FFD700, 0 0 30px #00BFFF;
+      animation: glow 3s infinite alternate;
+      transition: transform 0.3s;
+    }
+    .logo:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 0 25px #FFD700, 0 0 35px #00BFFF;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 15px #FFD700, 0 0 20px #00BFFF; }
+      to { box-shadow: 0 0 25px #FFD700, 0 0 30px #00BFFF; }
+    }
+    .tagline {
+      font-size: 1.2rem;
+      color: #FFD700;
+      letter-spacing: 2px;
+      margin-top: 10px;
+      font-style: italic;
+      text-shadow: 0 0 10px #FFD700;
+    }
+
+    /* Navigation */
+    nav {
+      margin-top: 20px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #00BFFF;
+      margin: 0 15px;
+      font-weight: bold;
+      position: relative;
+      transition: 0.3s;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      height: 3px;
+      background: #FFD700;
+      width: 0;
+      transition: width 0.3s;
+      margin-top: 5px;
+      border-radius: 2px;
+    }
+    nav a:hover {
+      color: #FFD700;
+      text-shadow: 0 0 10px #FFD700;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    section h2 {
+      font-size: 2.2rem;
+      color: #FFD700;
+      text-shadow: 0 0 15px #FFD700;
+      margin-bottom: 20px;
+    }
+    section p {
+      margin: 20px auto;
+      font-size: 1.1rem;
+      max-width: 650px;
+      line-height: 1.6;
+    }
+
+    /* Buttons */
+    .cta-btn {
+      padding: 12px 28px;
+      background: #FFD700;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #FFD700;
+    }
+    .cta-btn:hover {
+      background: #00BFFF;
+      color: white;
+      box-shadow: 0 0 15px #00BFFF;
+      transform: scale(1.05);
+    }
+
+    /* Menu Section */
+    .menu-list {
+      max-width: 900px;
+      margin: 0 auto;
+      max-height: 80vh;
+      overflow-y: auto;
+      text-align: left;
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 30px;
+      border: 2px solid #00BFFF;
+      box-shadow: 0 0 20px #00BFFF;
+    }
+    .menu-list h3 {
+      color: #00BFFF;
+      margin-top: 25px;
+      border-bottom: 1px solid #00BFFF;
+      padding-bottom: 5px;
+    }
+    .menu-list p {
+      margin: 6px 0;
+      color: #fff;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .menu-list::-webkit-scrollbar {
+      width: 8px;
+    }
+    .menu-list::-webkit-scrollbar-thumb {
+      background: linear-gradient(#FFD700, #00BFFF);
+      border-radius: 10px;
+    }
+
+    /* Contact */
+    .contact a { 
+      color: #00BFFF; 
+      text-decoration: none; 
+      transition: 0.3s;
+    }
+    .contact a:hover {
+      color: #FFD700;
+      text-shadow: 0 0 10px #FFD700;
+    }
+
+    /* Footer */
+    .footer {
+      background: #001;
+      padding: 20px;
+      text-align: center;
+      color: #FFD700;
+      font-size: 0.9rem;
+      box-shadow: inset 0 5px 20px #00BFFF;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Animation -->
+  <canvas id="bg-animation"></canvas>
+
+  <!-- Header -->
+  <header>
+    <div class="logo"></div> <!-- 🍔 Your burger logo -->
+    <p class="tagline">Legend of Burger</p>
+     <center>
+    <nav>
+     <a href="#home">Home</a> 
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </center>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="home">
+    <h2>Welcome to the Legend</h2>
+    <p>Serving mouth-watering burgers with a hint of love and a splash of legend.</p>
+    <button class="cta-btn">Order Now</button>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>We don’t just make burgers. We craft legends. Every bite is designed to spark flavor, fun, and nostalgia — because at All About Burger, taste rules the world!</p>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="menu">
+    <h2>Our Full Menu</h2>
+    <div class="menu-list">
+      <h3>🔹 Legendary Burgers</h3>
+      <p>Legendary Chicken Burger — ₹129</p>
+      <p>Legendary Aloo Tikki Burger — ₹99</p>
+
+      <h3>🔹 Mighty Burgers</h3>
+      <p>Mighty Premium Veg Burger — ₹159</p>
+      <p>Mighty Paneer Fillet Burger — ₹179</p>
+      <p>Mighty Grilled Paneer Burger — ₹189</p>
+      <p>Mighty Cheese Burger — ₹199</p>
+      <p>Mighty Mutton Pounder Burger — ₹229</p>
+      <p>Mighty Chicken Fried Burger — ₹189</p>
+      <p>Mighty Grilled Chicken Burger — ₹199</p>
+
+      <h3>🔹 Burgers Legacy</h3>
+      <p>Lacchedar Smash Chicken Burger — ₹229</p>
+      <p>Lacchedar Smash Mutton Burger — ₹269</p>
+
+      <h3>🍟 Fries & Sides</h3>
+      <p>French Fries — ₹99</p>
+      <p>Peri-Peri Fries — ₹119</p>
+      <p>Cheesy French Fries — ₹129</p>
+
+      <h3>🧀 Appetizers</h3>
+      <p>Cheese Fingers — ₹119</p>
+      <p>Chicken Strips — ₹149</p>
+      <p>Chicken Wings — ₹139</p>
+      <p>Chicken Nuggets — ₹129</p>
+
+      <h3>🍽️ Deals @109</h3>
+      <p>Legendary Aloo + Campa — ₹109</p>
+      <p>Legendary Chicken + Wing — ₹109</p>
+      <p>Chicken Strips (3 Pcs) — ₹109</p>
+
+      <h3>🍽️ Meals</h3>
+      <p>Legendary Chicken Meal — ₹248</p>
+      <p>Aloo Tikki Meal — ₹218</p>
+      <p>Mighty Cheese Burger Meal — ₹318</p>
+      <p>Mighty Paneer Fillet Meal — ₹298</p>
+      <p>Grilled Chicken Meal — ₹308</p>
+
+      <h3>💥 Ultimate Meals Pro Max</h3>
+      <p>Ultimate Non-Veg Pro Max — ₹1899</p>
+      <p>Ultimate Veg Pro Max — ₹1699</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>📍 Near City Square, Lucknow | ☎️ +91 77849 39669</p>
+    <p>Follow us on <a href="#">Instagram</a> | <a href="#">Facebook</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 All About BurGer | Designed by Sahil ✨</p>
+  </footer>
+
+  <script>
+    // Neon Floating Particles Background
+    const canvas = document.getElementById('bg-animation');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.6;
+        this.speedY = (Math.random() - 0.5) * 0.6;
+        this.color = Math.random() > 0.5 ? '#FFD700' : '#00BFFF';
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = this.color;
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < 120; i++) particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+  </script>
+</body>
+</html>
